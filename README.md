@@ -30,9 +30,9 @@ The script collector.js provides both custom and out-of-the-box gauge statistic 
 git clone https://github.com/oluojop7/DAS-2078-k6-integrated-perf-metric-prototype.git
 * Run the integrated  containers and the metric collector code.
 
-cd DAS-2078-k6-integrated-perf-metric-prototype
-docker-compose up -d influxdb grafana
-docker-compose run k6 run /scripts/collector.js
+cd DAS-2078-k6-integrated-perf-metric-prototype<br>
+docker-compose up -d influxdb grafana<br>
+docker-compose run k6 run /scripts/collector.js<br>
 
 * Launch the browser to access the real-time, web-based dashboard using this URL:
   http://localhost:3030/d/k6/k6-load-testing-results
