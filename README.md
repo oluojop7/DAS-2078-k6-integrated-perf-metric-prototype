@@ -11,7 +11,7 @@ K6 pairs with InfluxDB to capture metric data  as data points with a value and t
 In turn,  InfluxDB pairs with Grafana, a web dashboarding interface to help visualize metric data. This integration was simplified by Thompson, L., 2020; in his article published in The Startup.
 
 The 3 containers are maintained by the Docker daemon process.
-![alt text](IntegratedContainers.png "Title")
+![alt text](integrated-containers.png "Title")
 
 #### Dashboards
 Grafana provides a collection of dashboard templates. The dashboard in /dashboards is adapted from the excellent K6 / Grafana dashboard template:
@@ -25,4 +25,21 @@ There are only two small modifications:
 The script collector.js provides both custom and out-of-the-box gauge statistic metrics. These will be modified to generate more custom metrics.
 
 #### Coding and Execution Steps
-The script coll
+* One time cloning. From the terminal execute:
+
+git clone https://github.com/oluojop7/DAS-2078-k6-integrated-perf-metric-prototype.git
+* Run the integrated  containers and the metric collector code.
+
+cd DAS-2078-k6-integrated-perf-metric-prototype
+docker-compose up -d influxdb grafana
+docker-compose run k6 run /scripts/collector.js
+
+* Launch the browser to access the real-time, web-based dashboard using this URL:
+  http://localhost:3030/d/k6/k6-load-testing-results
+
+#### Extending the code
+The entry point for metric definition is the scripts/collector.js.
+Environment set up files include the YAML files:
+* docker-compose.yaml
+* grafana-dashboard.yaml
+* grafana-datasource.yaml
